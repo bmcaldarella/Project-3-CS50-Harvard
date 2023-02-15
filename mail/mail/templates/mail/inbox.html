@@ -1,0 +1,62 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<div class="main-container">  
+    <br>
+
+   
+        <div class="d-flex justify-content-center " >
+          <div class="mt-0" >
+                <button type="button"type="button" class="btn btn-dark"id="inbox">Inbox</button>
+                <button type="button"type="button" class="btn btn-dark" id="compose">Compose</button>
+                <button type="button"type="button" class="btn btn-dark" id="sent">Sent</button>
+                <button type="button"type="button" class="btn btn-dark" id="archived">Archived</button>
+                <a type="button" class="btn btn-dark" href="{% url 'logout' %}">Log Out</a>
+            </div>    
+        </div>
+        
+        <div class="float-right">
+       
+            <h6>{{ request.user.email }}</h6>
+         
+        </div>
+        <br>
+    <hr>
+
+    <div id="emails-view">
+    </div>
+    <div id="emails-view1">
+
+
+
+    </div>
+<div class="form-group1">
+  <form id="compose-form">
+    <div id="compose-view">
+        <h3>New Email</h3>
+        
+          
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+           
+         
+                To: <input id="compose-recipients" class="form-control">
+           
+          
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+           
+            <textarea class="form-control" rows="10" cols="20"  id="compose-body" placeholder="Body"></textarea>
+            
+          
+                    <input class="btn btn-primary" type="submit" value="Send" name="buttonSubmit1">
+             </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
